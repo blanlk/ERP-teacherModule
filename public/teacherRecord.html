@@ -2,95 +2,229 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/teacherRecord.css">
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/stylesheets/teacherRecord.css" rel="stylesheet">
     <script src="/javascripts/angular.js"></script>
 </head>
 <body>
 
-    <div ng-app="teacherRecordApp" ng-controller="teacherRecordCtrl">
-
-
-        <div class="container">
-            <h1>Teacher Record</h1>
-            <form>
-                <div><input type="hidden" ng-model="_id"></div>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Name" ng-model="name">
+<div ng-app="teacherRecordApp" ng-controller="teacherRecordCtrl">
+    <div style="text-align: center;"><h1>Teacher Records</h1></div>
+    <div class="container">
+        <form>
+            <div><input ng-model="_id" type="hidden"></div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <label for="name">Name:</label>
                 </div>
-                <div class="form-group">
-                    <label for="email_id">Email ID</label>
-                    <input type="text" class="form-control" id="email_id" placeholder="Enter Email ID" ng-model="email_id">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <input class="form-control" id="name" ng-model="name" placeholder="Enter Name" required="true" type="text">
                 </div>
-                <div class="form-group">
-                    <label for="age">Age</label>
-                    <input type="text" class="form-control" id="age" placeholder="Enter Age" ng-model="age">
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <label for="email_id">Email ID:</label>
                 </div>
-                <div class="form-group">
-                    <label for="phone_no">Phone no.</label>
-                    <input type="text" class="form-control" id="phone_no" placeholder="Enter Phone no." ng-model="phone_no">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <input class="form-control" id="email_id" ng-model="email_id" placeholder="Enter Email ID" required="true" type="text">
                 </div>
-                <div class="form-group">
-                    <label for="employee_code">Employee code</label>
-                    <input type="text" class="form-control" id="employee_code" placeholder="Enter Employee code" ng-model="employee_code">
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <label for="age">Age:</label>
                 </div>
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="Enter Address" ng-model="address">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <input class="form-control" id="age" ng-model="age" placeholder="Enter Age" required="true" type="text">
                 </div>
-                <div class="form-group">
-                    <label for="qualification">Qualification</label>
-                    <input type="text" class="form-control" id="qualification" placeholder="Enter Qualification" ng-model="qualification">
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <label for="phone_no">Phone no:</label>
                 </div>
-                <div class="form-group">
-                    <label for="department">Department</label>
-                    <input type="text" class="form-control" id="department" placeholder="Enter Department" ng-model="department">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <input class="form-control" id="phone_no" ng-model="phone_no" placeholder="Enter Phone no." required="true" type="text">
                 </div>
-                <div class="form-group">
-                    <label for="designation">Designation</label>
-                    <input type="text" class="form-control" id="designation" placeholder="Enter Designation" ng-model="designation">
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <label for="employee_code">Employee Code:</label>
                 </div>
-
-                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
-            </form>
-
-            <center>
-                <table>
-                    <tr ng-repeat="record in myData">
-                        <td>{{record.name}}</td>
-                        <td>{{record.email_id}}</td>
-                        <td>{{record.age}}</td>
-                        <td>{{record.phone_no}}</td>
-                        <td>{{record.employee_code}}</td>
-                        <td>{{record.address}}</td>
-                        <td>{{record.qualification}}</td>
-                        <td>{{record.department}}</td>
-                        <td>{{record.designation}}</td>
-                        <td><button ng-click="edit(record._id,record.name, record.email_id, record.age,record.phone_no,record.employee_code,record.address,record.qualification,record.department,record.designation)" class="btn btn-outline-info">Edit</button></td>
-                        <td><button class="btn btn-outline-danger" ng-click="delete(record._id)">Delete</button></td>
-                    </tr>
-                </table>
-            </center>
-
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <input class="form-control" id="employee_code" ng-model="employee_code" placeholder="Enter Employee code" required="true" type="text">
+                </div>
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <label for="address">Address:</label>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <input class="form-control" id="address" ng-model="address" placeholder="Enter Address" required="true" type="text">
+                </div>
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <label for="qualification">Qualification:</label>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <input class="form-control" id="qualification" ng-model="qualification" placeholder="Enter Qualification" required="true" type="text">
+                </div>
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <label for="department">Department:</label>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <select class="form-control" id="department" ng-model="department" required="true">
+                        <option value="" selected disabled>Select</option>
+                        <option>Computer Engineering</option>
+                        <option>Information Technology</option>
+                        <option>Electronics and Telecommunication</option>
+                        <option>Sciences and Humanities</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <label for="designation">Designation:</label>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                    <input class="form-control" id="designation" ng-model="designation" placeholder="Enter Designation" required="true" type="text">
+                </div>
+            </div>
+            <div class="row mx-auto justify-content-center">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary" ng-click="save()" type="submit">Save</button>
+                    <button class="btn btn-primary" ng-click="clear()" type="submit">Clear</button>
+                </div>
+            </div>
+        </form>
+        <div style="text-align: center;"><h1>Details</h1></div>
+        <div class="container-fluid" style="text-align: center;">
+            <table border="2px">
+                <tr>
+                    <th>Name</th>
+                    <th>Email ID</th>
+                    <th>Age</th>
+                    <th>Phone No.</th>
+                    <th>Employee Code</th>
+                    <th>Address </th>
+                    <th>Qualification</th>
+                    <th>Department</th>
+                    <th>Designation</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr ng-repeat="record in myData">
+                    <td>{{record.name}}</td>
+                    <td>{{record.email_id}}</td>
+                    <td>{{record.age}}</td>
+                    <td>{{record.phone_no}}</td>
+                    <td>{{record.employee_code}}</td>
+                    <td>{{record.address}}</td>
+                    <td>{{record.qualification}}</td>
+                    <td>{{record.department}}</td>
+                    <td>{{record.designation}}</td>
+                    <td>
+                        <button class="btn btn-outline-info" ng-click="edit(record._id,record.name, record.email_id, record.age,record.phone_no,record.employee_code,record.address,record.qualification,record.department,record.designation)">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger " ng-click="delete(record._id)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </table>
         </div>
-
-
-
-
-
-
     </div>
+</div>
 
-    <script>
-        const app = angular.module('teacherRecordApp',[]);
-        app.controller('teacherRecordCtrl', function ($scope, $http) {
-            $http.get('http://localhost:3000/teacherRecord/get-teacherRecords').then((response)=>{
-                console.log(response.data);
-                $scope.myData = response.data;
-            });
+<script>
+    const app = angular.module('teacherRecordApp', []);
+    app.controller('teacherRecordCtrl', function ($scope, $http) {
+        $http.get('http://localhost:3000/teacherRecord/get-teacherRecords').then((response) => {
+            console.log(response.data);
+            $scope.myData = response.data;
+        });
 
+        $scope._id = '';
+        $scope.name = '';
+        $scope.email_id = '';
+        $scope.age = '';
+        $scope.phone_no = '';
+        $scope.employee_code = '';
+        $scope.address = '';
+        $scope.qualification = '';
+        $scope.department = '';
+        $scope.designation = '';
+
+        $scope.edit = function (_id, name, email_id, age, phone_no, employee_code, address, qualification, department, designation) {
+            $scope._id = _id;
+            $scope.name = name;
+            $scope.email_id = email_id;
+            $scope.age = age;
+            $scope.phone_no = phone_no;
+            $scope.employee_code = employee_code;
+            $scope.address = address;
+            $scope.qualification = qualification;
+            $scope.department = department;
+            $scope.designation = designation;
+        }
+
+        $scope.save = function () {
+            if ($scope._id.length > 0) {
+                const record = {
+                    _id: $scope._id,
+                    name: $scope.name,
+                    email_id: $scope.email_id,
+                    age: $scope.age,
+                    phone_no: $scope.phone_no,
+                    employee_code: $scope.employee_code,
+                    address: $scope.address,
+                    qualification: $scope.qualification,
+                    department: $scope.department,
+                    designation: $scope.designation
+                }
+                $http.post('http://localhost:3000/teacherRecord/update-teacherRecord', record).then((response) => {
+                    if (response.data.msg == 'Record is updated') {
+                        console.log(response.data);
+                        for (let i = 0; i < $scope.myData.length; i++) {
+                            if ($scope.myData[i]._id == $scope._id) {
+                                $scope.myData[i] = record;
+                            }
+                        }
+                        console.log($scope.myData);
+                        alert('Record Updated');
+
+                    }
+                });
+            } else {
+                const record = {
+                    _id: '',
+                    name: $scope.name,
+                    email_id: $scope.email_id,
+                    age: $scope.age,
+                    phone_no: $scope.phone_no,
+                    employee_code: $scope.employee_code,
+                    address: $scope.address,
+                    qualification: $scope.qualification,
+                    department: $scope.department,
+                    designation: $scope.designation
+                }
+                $http.post('http://localhost:3000/teacherRecord/add-teacherRecord', record).then((response) => {
+                    if (response.data.msg == 'Record is added') {
+                        console.log(response.data);
+                        $scope.myData.push(response.data.obj);
+                        alert('record Added');
+                    }
+                });
+                $scope.clear();
+            }
+        }
+
+        $scope.clear = function () {
             $scope._id = '';
             $scope.name = '';
             $scope.email_id = '';
@@ -101,107 +235,28 @@
             $scope.qualification = '';
             $scope.department = '';
             $scope.designation = '';
+        }
 
-            $scope.edit = function (_id,name,email_id,age,phone_no,employee_code,address,qualification,department,designation) {
-                $scope._id = _id;
-                $scope.name = name;
-                $scope.email_id = email_id;
-                $scope.age = age;
-                $scope.phone_no = phone_no;
-                $scope.employee_code = employee_code;
-                $scope.address = address;
-                $scope.qualification = qualification;
-                $scope.department = department;
-                $scope.designation = designation;
+        $scope.delete = function (_id) {
+            const record = {
+                _id: _id
             }
+            $http.post('http://localhost:3000/teacherRecord/delete-teacherRecord', record).then((response) => {
+                if (response.data.msg == 'Record Deleted') {
+                    console.log(response.data);
+                    alert('Record Deleted');
+                    $scope.myData = $scope.myData.filter(record => record._id !== _id);
 
-            $scope.save = function () {
-                if($scope._id.length > 0){
-                    const record = {
-                        _id: $scope._id,
-                        name: $scope.name,
-                        email_id: $scope.email_id,
-                        age: $scope.age,
-                        phone_no: $scope.phone_no,
-                        employee_code: $scope.employee_code,
-                        address: $scope.address,
-                        qualification: $scope.qualification,
-                        department: $scope.department,
-                        designation: $scope.designation
-                    }
-                    $http.post('http://localhost:3000/teacherRecord/update-teacherRecord',record).then((response)=>{
-                       if(response.data.msg== 'Record is updated'){
-                           console.log(response.data);
-                           for(let i =0; i < $scope.myData.length; i++){
-                               if($scope.myData[i]._id== $scope._id){
-                                   $scope.myData[i] = record;
-                               }
-                           }
-                           console.log($scope.myData);
-                           alert('Record updated');
-
-                        }
-                    });
-
-                    alert('Edit');
-                }else{
-                    const record = {
-                        _id: '',
-                        name: $scope.name,
-                        email_id: $scope.email_id,
-                        age: $scope.age,
-                        phone_no: $scope.phone_no,
-                        employee_code: $scope.employee_code,
-                        address: $scope.address,
-                        qualification: $scope.qualification,
-                        department: $scope.department,
-                        designation: $scope.designation
-                    }
-                    $http.post('http://localhost:3000/teacherRecord/add-teacherRecord',record).then((response)=>{
-                       if(response.data.msg == 'Record is added') {
-                           console.log(response.data);
-                           $scope.myData.push(response.data.obj);
-                           alert('record added');
-                       }
-                    });
-
-                    $scope.clear();
+                } else {
+                    console.log(response.data);
+                    alert('Unable to delete record');
                 }
-            }
+            });
+        }
 
-            $scope.clear =  function () {
-                $scope._id = '';
-                $scope.name = '';
-                $scope.email_id = '';
-                $scope.age = '';
-                $scope.phone_no = '';
-                $scope.employee_code = '';
-                $scope.address = '';
-                $scope.qualification = '';
-                $scope.department = '';
-                $scope.designation = '';
-            }
-
-            $scope.delete = function (_id) {
-                const record = {
-                    _id : _id
-                }
-                $http.post('http://localhost:3000/teacherRecord/delete-teacherRecord',record).then((response)=>{
-                    if(response.data.msg == 'Record Deleted'){
-                        console.log(response.data);
-                        alert('Record Deleted');
-                        $scope.myData = $scope.myData.filter(record => record._id !== _id);
-
-                    }else{
-                        console.log(response.data);
-                        alert('Unable to delete record');
-                    }
-                });
-            }
-
-        });
+    });
 
 
-    </script>
+</script>
 </body>
 </html>
